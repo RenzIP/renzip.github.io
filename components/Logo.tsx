@@ -10,7 +10,7 @@ export default function Logo() {
       </svg>
       <div className="leading-tight">
         <span className="font-semibold tracking-tight">Renz</span>
-        <span className="ml-1 text-xs text-muted-foreground font-[var(--font-zen)]">絆</span>
+        <span className="ml-1 text-xs text-muted-foreground font-[var(--font-zen)]">レンツ</span>
       </div>
     </Link>
   );

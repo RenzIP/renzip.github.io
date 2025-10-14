@@ -2,6 +2,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import ProjectFilter from "@/components/ProjectFilter";
 import TechStack from "@/components/TechStack";
 import SectionSnap from "@/components/SectionSnap";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -15,36 +16,67 @@ function Hero() {
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs bg-background/70 backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" />
-              <span>Building with Next.js • Tailwind • Golang</span>
+              <span>Building with Next.js • Tailwind</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Renz <span className="font-[var(--font-zen)]">—</span> Full-Stack Dev
+              Renz <span className="font-[var(--font-zen)]">| </span> Backend
+              Dev
               <span className="block text-muted-foreground text-xl md:text-2xl font-normal mt-2">
-                tech minimal • subtle anime vibes
+                Gamer • Anime Enthusiast • Tech Lover
               </span>
             </h1>
             <p className="max-w-2xl text-muted-foreground">
-              Aku membangun aplikasi web cepat, bersih, dan mudah di-maintain. Suka eksperimen UI/animasi kecil ala anime—<em>tasteful</em>, tetap profesional.
+              I build applications and websites that are fast, clean, and easy
+              to maintain. I sometimes like to experiment with other programming
+              languages.
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button asChild><a href="#projects">Lihat Projects</a></Button>
-              <Button variant="secondary" asChild><a href="#skills">Skills</a></Button>
-              <Button variant="outline" asChild><a href="mailto:you@example.com"><Mail className="mr-2 h-4 w-4"/>Contact</a></Button>
+              <Button asChild>
+                <a href="#projects">Lihat Projects</a>
+              </Button>
+              <Button variant="secondary" asChild>
+                <a href="#skills">Skills</a>
+              </Button>
+              <Button variant="outline" asChild>
+                <a href="mailto:you@example.com">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Contact
+                </a>
+              </Button>
               <ThemeToggle />
             </div>
             <div className="flex flex-wrap gap-2 pt-2">
-              {['Next.js','Golang','MongoDB','Tailwind','Cloudflare','Vercel'].map(t=> (
-                <Badge key={t} variant="secondary">{t}</Badge>
+              {[
+                "Next.js",
+                "Golang",
+                "MongoDB",
+                "Tailwind",
+                "Cloudflare",
+                "Vercel",
+              ].map((t) => (
+                <Badge key={t} variant="secondary">
+                  {t}
+                </Badge>
               ))}
             </div>
           </div>
           <div className="flex md:justify-end">
             <div className="relative group">
-              <div className="size-40 md:size-56 rounded-2xl border bg-gradient-to-br from-pink-500/20 via-transparent to-indigo-500/20 flex items-center justify-center overflow-hidden shadow-sm">
-                <span className="text-6xl md:text-7xl select-none">🗡️</span>
+              <div className="size-40 md:size-56 rounded-2xl border overflow-hidden shadow-sm bg-gradient-to-br from-pink-500/10 via-transparent to-indigo-500/10">
+                <Image
+                  src="/My Bini.png" // ganti jadi nama file fotomu di /public
+                  alt="Foto Renz"
+                  fill // isi penuh container
+                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  sizes="(min-width: 768px) 14rem, 10rem" // md:size-56 = ~14rem; size-40 = ~10rem
+                  priority // supaya cepat muncul di hero
+                  placeholder="empty" // bisa diganti 'blur' jika punya blurDataURL
+                />
               </div>
+
+              {/* label kecil ikon khas */}
               <div className="absolute -bottom-3 -right-3 text-[10px] px-2 py-1 rounded-full border bg-background/80 backdrop-blur">
-                <span className="font-[var(--font-zen)]">絆</span> | craft
+                <span className="font-[var(--font-zen)]">レンツ</span> | Renz
               </div>
             </div>
           </div>
@@ -83,13 +115,32 @@ function ExperienceCTA() {
         <section className="rounded-2xl border p-6 md:p-8 bg-gradient-to-br from-pink-500/10 via-background to-indigo-500/10">
           <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
             <div className="md:flex-1">
-              <h3 className="text-xl md:text-2xl font-semibold">Ada project menarik?</h3>
-              <p className="text-sm text-muted-foreground">Terbuka untuk freelance/part-time. Ajak ngobrol santai.</p>
+              <h3 className="text-xl md:text-2xl font-semibold">
+                Ada project menarik?
+              </h3>
+              <p className="text-sm text-muted-foreground">
+                Terbuka untuk freelance/part-time. Ajak ngobrol santai.
+              </p>
             </div>
             <div className="flex gap-3">
-              <Button asChild><a href="mailto:you@example.com"><Mail className="mr-2 h-4 w-4" />Email</a></Button>
-              <Button variant="outline" asChild><a href="https://github.com/username" target="_blank"><Github className="mr-2 h-4 w-4" />GitHub</a></Button>
-              <Button variant="secondary" asChild><a href="/Renz-CV.pdf" target="_blank"><FileText className="mr-2 h-4 w-4" />CV</a></Button>
+              <Button asChild>
+                <a href="mailto:baagas7474@gmail.com">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Email
+                </a>
+              </Button>
+              <Button variant="outline" asChild>
+                <a href="https://github.com/renzip" target="_blank">
+                  <Github className="mr-2 h-4 w-4" />
+                  GitHub
+                </a>
+              </Button>
+              <Button variant="secondary" asChild>
+                <a href="/Renz-CV.pdf" target="_blank">
+                  <FileText className="mr-2 h-4 w-4" />
+                  CV
+                </a>
+              </Button>
             </div>
           </div>
         </section>
@@ -108,10 +159,18 @@ export default function Home() {
         "h-[100svh] overflow-y-auto no-scrollbar snap-container snap-y snap-mandatory"
       }
     >
-      <SectionSnap id="hero"><Hero /></SectionSnap>
-      <SectionSnap id="projects"><Projects /></SectionSnap>
-      <SectionSnap id="skills"><Skills /></SectionSnap>
-      <SectionSnap id="contact"><ExperienceCTA /></SectionSnap>
+      <SectionSnap id="hero">
+        <Hero />
+      </SectionSnap>
+      <SectionSnap id="projects">
+        <Projects />
+      </SectionSnap>
+      <SectionSnap id="skills">
+        <Skills />
+      </SectionSnap>
+      <SectionSnap id="contact">
+        <ExperienceCTA />
+      </SectionSnap>
     </main>
   );
 }
