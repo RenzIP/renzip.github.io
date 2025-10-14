@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     // kalau belum bikin twitter-image.tsx, pakai og yang sama juga boleh
-    images: ["/opengraph-image"],
+    images: ["/twitter-image"],
   },
 };
 
