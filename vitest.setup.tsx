@@ -1,23 +1,43 @@
 import "@testing-library/jest-dom";
-import React from "react";
+import React, { ImgHTMLAttributes } from "react";
 
-class ResizeObserver { observe(){} unobserve(){} disconnect(){} }
-(global as any).ResizeObserver = ResizeObserver;
+// --- ResizeObserver mock (tanpa any)
+class ResizeObserver {
+  observe(): void {}
+  unobserve(): void {}
+  disconnect(): void {}
+}
+// pasang ke window tanpa cast any
+Object.defineProperty(window, "ResizeObserver", {
+  writable: true,
+  configurable: true,
+  value: ResizeObserver,
+});
 
+// --- matchMedia mock (sudah bertipe)
 Object.defineProperty(window, "matchMedia", {
   writable: true,
-  value: (q: string) => ({
-    matches: false, media: q, onchange: null,
-    addListener: () => {}, removeListener: () => {},
-    addEventListener: () => {}, removeEventListener: () => {}, dispatchEvent: () => false,
+  value: (query: string): MediaQueryList => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: () => {},
+    removeListener: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => false,
   }),
 });
 
-vi.mock("next/image", () => ({
-  default: (props: any) => React.createElement("img", props),
-}));
-
+// --- polyfill ringan yang dibutuhkan cmdk / DOM
 Object.defineProperty(window.HTMLElement.prototype, "scrollIntoView", {
   value: vi.fn(),
   writable: true,
+});
+
+// --- next/image mock → pakai <img> tanpa any
+vi.mock("next/image", () => {
+  const Img = (props: ImgHTMLAttributes<HTMLImageElement>) =>
+    React.createElement("img", props);
+  return { default: Img };
 });
