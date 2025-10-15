@@ -174,3 +174,14 @@ export default function Home() {
     </main>
   );
 }
+
+// Dummy projects array for static params generation
+const projects = [
+  { id: "project-1" },
+  { id: "project-2" },
+  // Add more projects as needed
+];
+
+export function generateStaticParams() {
+  return projects.map(p => ({ id: p.id }));
+}
