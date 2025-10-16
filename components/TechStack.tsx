@@ -7,20 +7,19 @@ type Skill = { name: string; key: React.ComponentProps<typeof SkillIcon>["name"]
 const skills: Skill[] = [
   { name: "JavaScript", key: "javascript", level: "Beginner", years: 1 },
   { name: "TypeScript", key: "typescript", level: "Beginner", years: 1 },
-  { name: "React", key: "react", level: "Beginner", years: 4 },
-  { name: "Next.js", key: "next", level: "Beginner", years: 3 },
+  { name: "React", key: "react", level: "Beginner", years: 1 },
+  { name: "Next.js", key: "next", level: "Beginner", years: 1 },
   { name: "Tailwind", key: "tailwind", level: "Beginner", years: 1 },
   { name: "Golang", key: "golang", level: "Beginner", years: 1 },
   { name: "Java", key: "java", level: "Beginner", years: 1 },
   { name: "Python", key: "python", level: "Beginner", years: 1 },
   { name: "HTML", key: "html", level: "Beginner", years: 1 },
   { name: "CSS", key: "css", level: "Beginner", years: 1 },
-  { name: "MongoDB", key: "mongodb", level: "Beginner", years: 8 },
+  { name: "MongoDB", key: "mongodb", level: "Beginner", years: 1 },
   { name: "MySQL", key: "mysql", level: "Beginner", years: 1 },
-  { name: "Docker", key: "docker", level: "Beginner", years: 1 },
   { name: "Nginx", key: "nginx", level: "Beginner", years: 1 },
   { name: "Git", key: "git", level: "Beginner", years: 1 },
-  { name: "Linux", key: "linux", level: "Intermediate", years: 2 },
+  { name: "Linux", key: "linux", level: "Intermediate", years: 1 },
 ];
 
 const levelColor: Record<Skill["level"], string> = {
