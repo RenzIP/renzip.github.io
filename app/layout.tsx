@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import SakuraBackground from "@/components/SakuraBackground";
 import CustomCursor from "@/components/CustomCursor";
 import CommandMenu from "@/components/CommandMenu";
+import AnimeLoader from "@/components/AnimeLoader";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 const zen = Zen_Maru_Gothic({ weight: ["400","700"], subsets: ["latin"], variable: "--font-zen" });
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="id" suppressHydrationWarning className="scroll-smooth">
       <body className={`bg-background text-foreground ${figtree.variable} ${zen.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <AnimeLoader />
           <SakuraBackground />
           <CustomCursor />
           <Navbar />
@@ -49,3 +51,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+
+
