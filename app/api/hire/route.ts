@@ -16,43 +16,38 @@ const Body = z.object({
 
 export async function POST(req: Request) {
   try {
-    const json = await req.json();
-    const data = Body.parse(json);
-
-    // honeypot: jika diisi → abaikan diam-diam
-    if (data.honey && data.honey.trim() !== "") {
-      return NextResponse.json({ ok: true });
-    }
+    const payload = Body.parse(await req.json());
+    if (payload.honey?.trim()) return NextResponse.json({ ok: true });
 
     const to = process.env.HIRE_TO_EMAIL || "zenkun.enterkill13@gmail.com";
     const from = process.env.HIRE_FROM_EMAIL || "onboarding@resend.dev";
 
-    const html = `
+    const html = /* sama seperti sebelumnya */ `
       <h2>New Hire Request</h2>
-      <p><b>Name:</b> ${escapeHtml(data.name)}</p>
-      <p><b>Email:</b> ${escapeHtml(data.email)}</p>
-      <p><b>Business:</b> ${escapeHtml(data.business)}</p>
-      <p><b>Needs:</b> ${data.needs.map(escapeHtml).join(", ")}</p>
-      <p><b>Timeframe:</b> ${escapeHtml(data.timeframe)}</p>
-      <p><b>Notes:</b><br/>${escapeHtml(data.notes || "-")}</p>
+      <p><b>Name:</b> ${escapeHtml(payload.name)}</p>
+      <p><b>Email:</b> ${escapeHtml(payload.email)}</p>
+      <p><b>Business:</b> ${escapeHtml(payload.business)}</p>
+      <p><b>Needs:</b> ${payload.needs.map(escapeHtml).join(", ")}</p>
+      <p><b>Timeframe:</b> ${escapeHtml(payload.timeframe)}</p>
+      <p><b>Notes:</b><br/>${escapeHtml(payload.notes || "-")}</p>
     `;
 
-    // >>> hanya kirim ke kamu (TIDAK ada auto-reply) <<<
     await resend.emails.send({
       from: `Renz Portfolio <${from}>`,
       to,
-      subject: `New Hire Request — ${data.name}`,
-      replyTo: data.email, // supaya bisa langsung reply dari inbox
+      subject: `New Hire Request — ${payload.name}`,
+      replyTo: payload.email,
       html,
     });
 
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
-    console.error(err);
-    return NextResponse.json(
-      { ok: false, error: err?.message ?? "Unknown error" },
-      { status: 400 }
-    );
+  } catch (err: unknown) {                      // ⬅️ BUKAN any
+    // bedakan ZodError vs error lain
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ ok: false, error: err.message }, { status: 400 });
+    }
+    const msg = err instanceof Error ? err.message : "Unknown error";
+    return NextResponse.json({ ok: false, error: msg }, { status: 400 });
   }
 }
 

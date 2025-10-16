@@ -34,18 +34,19 @@ const TIMES = [
 export default function HireForm() {
   const [sent, setSent] = useState<null | "ok" | "err">(null);
 
-  const { register, handleSubmit, formState, reset, watch, setValue } = useForm<FormValues>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      business: "",
-      needs: [],
-      timeframe: "asap",
-      notes: "",
-      honey: "",
-    },
-  });
+  const { register, handleSubmit, formState, reset, watch, setValue } =
+    useForm<FormValues>({
+      resolver: zodResolver(FormSchema),
+      defaultValues: {
+        name: "",
+        email: "",
+        business: "",
+        needs: [],
+        timeframe: "asap",
+        notes: "",
+        honey: "",
+      },
+    });
   const { errors, isSubmitting } = formState;
 
   async function onSubmit(values: FormValues) {
@@ -78,7 +79,11 @@ export default function HireForm() {
               className="mt-1 w-full bg-transparent border-b py-2 outline-none"
               placeholder="Name"
             />
-            {errors.name && <p className="text-xs text-destructive mt-1">{errors.name.message}</p>}
+            {errors.name && (
+              <p className="text-xs text-destructive mt-1">
+                {errors.name.message}
+              </p>
+            )}
           </label>
 
           <label className="block">
@@ -89,7 +94,11 @@ export default function HireForm() {
               className="mt-1 w-full bg-transparent border-b py-2 outline-none"
               placeholder="Email"
             />
-            {errors.email && <p className="text-xs text-destructive mt-1">{errors.email.message}</p>}
+            {errors.email && (
+              <p className="text-xs text-destructive mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </label>
         </div>
       </section>
@@ -105,14 +114,18 @@ export default function HireForm() {
             placeholder="What do you do?"
           />
           {errors.business && (
-            <p className="text-xs text-destructive mt-1">{errors.business.message}</p>
+            <p className="text-xs text-destructive mt-1">
+              {errors.business.message}
+            </p>
           )}
         </label>
       </section>
 
       {/* NEEDS */}
       <section>
-        <h3 className="text-lg font-extrabold tracking-wide">WHAT NEEDS TO BE DONE?</h3>
+        <h3 className="text-lg font-extrabold tracking-wide">
+          WHAT NEEDS TO BE DONE?
+        </h3>
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {NEEDS.map((n) => (
             <label
@@ -124,7 +137,11 @@ export default function HireForm() {
                 checked={selectedNeeds.includes(n.label)}
                 onChange={(e) => {
                   const next = new Set(selectedNeeds);
-                  e.target.checked ? next.add(n.label) : next.delete(n.label);
+                  if (e.target.checked) {
+                    next.add(n.label);
+                  } else {
+                    next.delete(n.label);
+                  }
                   setValue("needs", Array.from(next));
                 }}
               />
@@ -132,12 +149,18 @@ export default function HireForm() {
             </label>
           ))}
         </div>
-        {errors.needs && <p className="text-xs text-destructive mt-1">{errors.needs.message}</p>}
+        {errors.needs && (
+          <p className="text-xs text-destructive mt-1">
+            {errors.needs.message}
+          </p>
+        )}
       </section>
 
       {/* TIMEFRAME */}
       <section>
-        <h3 className="text-lg font-extrabold tracking-wide">IDEAL TIMEFRAME</h3>
+        <h3 className="text-lg font-extrabold tracking-wide">
+          IDEAL TIMEFRAME
+        </h3>
         <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {TIMES.map((t) => (
             <label
@@ -153,7 +176,9 @@ export default function HireForm() {
 
       {/* NOTES */}
       <section>
-        <h3 className="text-lg font-extrabold tracking-wide">ANYTHING ELSE I NEED TO KNOW?</h3>
+        <h3 className="text-lg font-extrabold tracking-wide">
+          ANYTHING ELSE I NEED TO KNOW?
+        </h3>
         <textarea
           {...register("notes")}
           rows={4}
@@ -182,7 +207,9 @@ export default function HireForm() {
         </button>
 
         {sent === "ok" && (
-          <p className="mt-3 text-sm text-green-500">Thanks! I’ll reply via email soon.</p>
+          <p className="mt-3 text-sm text-green-500">
+            Thanks! I’ll reply via email soon.
+          </p>
         )}
         {sent === "err" && (
           <p className="mt-3 text-sm text-destructive">
