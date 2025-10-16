@@ -19,7 +19,7 @@ const skills: Skill[] = [
   { name: "MySQL", key: "mysql", level: "Beginner", years: 1 },
   { name: "Nginx", key: "nginx", level: "Beginner", years: 1 },
   { name: "Git", key: "git", level: "Beginner", years: 1 },
-  { name: "Linux", key: "linux", level: "Intermediate", years: 1 },
+  { name: "Linux", key: "linux", level: "Intermediate", years: 2 },
 ];
 
 const levelColor: Record<Skill["level"], string> = {
