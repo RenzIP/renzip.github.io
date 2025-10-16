@@ -48,8 +48,6 @@ function Hero() {
             <div className="flex flex-wrap gap-2 pt-2">
               {[
                 "Next.js",
-                "Golang",
-                "MongoDB",
                 "Tailwind",
                 "Cloudflare",
                 "Vercel",
