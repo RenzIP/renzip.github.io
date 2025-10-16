@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Github, Mail, FileText, Sparkles } from "lucide-react";
+import Link from "next/link";
 
 function Hero() {
   return (
@@ -32,6 +33,9 @@ function Hero() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild>
+                <Link href="/hire">Hire Me</Link>
+              </Button>
+              <Button asChild>
                 <a href="#projects">Lihat Projects</a>
               </Button>
               <Button variant="secondary" asChild>
@@ -46,12 +50,7 @@ function Hero() {
               <ThemeToggle />
             </div>
             <div className="flex flex-wrap gap-2 pt-2">
-              {[
-                "Next.js",
-                "Tailwind",
-                "Cloudflare",
-                "Vercel",
-              ].map((t) => (
+              {["Next.js", "Tailwind", "Cloudflare", "Vercel"].map((t) => (
                 <Badge key={t} variant="secondary">
                   {t}
                 </Badge>
@@ -181,5 +180,5 @@ const projects = [
 ];
 
 export function generateStaticParams() {
-  return projects.map(p => ({ id: p.id }));
+  return projects.map((p) => ({ id: p.id }));
 }

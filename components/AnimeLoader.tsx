@@ -63,20 +63,26 @@ export default function AnimeLoader() {
 
       {/* Kelopak sakura jatuh */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {Array.from({ length: 14 }).map((_, i) => (
-          <span
-            key={i}
-            className="petal"
-            style={
-              {
-                // sebaran acak sederhana
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${(i % 7) * 0.25}s`,
-                animationDuration: `${6 + (i % 5)}s`,
-              } as React.CSSProperties
-            }
-          />
-        ))}
+        {Array.from({ length: 14 }).map((_, i) => {
+          // posisi konsisten di SSR & client:
+          const leftPct = (i * 37) % 100; // penyebaran sederhana
+          const delay = (i % 7) * 0.25; // s
+          const duration = 6 + (i % 5); // s
+
+          return (
+            <span
+              key={i}
+              className="petal"
+              style={
+                {
+                  left: `${leftPct}%`,
+                  animationDelay: `${delay}s`,
+                  animationDuration: `${duration}s`,
+                } as React.CSSProperties
+              }
+            />
+          );
+        })}
       </div>
     </div>
   );
