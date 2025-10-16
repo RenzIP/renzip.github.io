@@ -19,7 +19,7 @@ export default function AnimeLoader() {
       return;
     }
 
-    const t = setTimeout(() => setShow(false), 1200); // durasi loader
+    const t = setTimeout(() => setShow(false), 6000); // durasi loader
     return () => clearTimeout(t);
   }, []);
 
