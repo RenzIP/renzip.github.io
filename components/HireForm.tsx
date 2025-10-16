@@ -18,10 +18,12 @@ const FormSchema = z.object({
 type FormValues = z.infer<typeof FormSchema>;
 
 const NEEDS = [
-  { id: "ux", label: "User Experience" },
-  { id: "brand", label: "Brand / Identity" },
-  { id: "motion", label: "Motion / Interaction" },
-  { id: "other", label: "Other" },
+  { id: "nextjs-site",  label: "Next.js/Reac.Js or Other Website / Landing" },
+  { id: "dashboard",    label: "Admin Dashboard / CRUD" },
+  { id: "deploy",       label: "Deploy & CI/CD (Vercel/CF/Railway/Other)" },
+  { id: "perf-seo",     label: "Performance & SEO" },
+  { id: "maintenance",  label: "Bug Fix / Maintenance" },
+  { id: "other",        label: "Other" },
 ];
 
 const TIMES = [
