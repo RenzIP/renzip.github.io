@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import ThemeToggle from "@/components/ThemeToggle";
 import Logo from "@/components/Logo";
 import { Button } from "@/components/ui/button";
+import PwaPrompt from "@/components/PwaPrompt";
 
 type NavItem = { href: string; label: string };
 
@@ -78,6 +79,7 @@ export default function Navbar() {
           </Button>
 
           <ThemeToggle />
+          <PwaPrompt />
         </div>
       </nav>
     </header>
