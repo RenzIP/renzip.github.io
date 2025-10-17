@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   description: "Gamer • Anime Enthusiast • Tech Lover — Next.js • Tailwind • Golang",
 
   // ganti ke domain kamu (atau biarkan pakai vercel url projectmu)
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://renz.my.id"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://renzip.my.id"),
 
   openGraph: {
     title: "Renz | Backend Dev",

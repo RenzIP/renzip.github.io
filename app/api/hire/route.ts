@@ -92,7 +92,7 @@ function emailHtmlAnime(p: Payload) {
 
       <!-- Footer -->
       <div style="padding:14px 26px;background:#fff7fb;border-top:1px solid #f3e2f8;color:#6b7280;font-size:12px">
-        Sent from <a href="https://renz.my.id" style="color:#ec4899;text-decoration:none;font-weight:600">renz.my.id</a> • <span style="opacity:.8">ありがとう 🌸</span>
+        Sent from <a href="https://renzip.my.id" style="color:#ec4899;text-decoration:none;font-weight:600">renzip.my.id</a> • <span style="opacity:.8">ありがとう 🌸</span>
       </div>
     </div>
   </div>`;
@@ -110,7 +110,7 @@ function emailTextAnime(p: Payload) {
     `Notes:`,
     `${p.notes || "-"}`,
     ``,
-    `renz.my.id`,
+    `renzip.my.id`,
   ].join("\n");
 }
 // ------------------------------------------------
